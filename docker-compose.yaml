@@ -1,0 +1,16 @@
+services:
+  service1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "7070:80"
+    #network_mode: host
+  service2:
+    image: jenkins/jenkins:latest
+    user: root
+    privileged: true
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
